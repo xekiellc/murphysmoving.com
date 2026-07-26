@@ -16,11 +16,11 @@
 <meta name="twitter:image" content="https://murphysmoving.com/og-image.jpg">
 <meta property="og:image" content="https://murphysmoving.com/og-image.jpg">
 
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%231b2430%22/><text x=%2250%22 y=%2268%22 font-size=%2264%22 font-family=%22Georgia,serif%22 font-weight=%22bold%22 fill=%22%23E8A33D%22 text-anchor=%22middle%22>M</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23F5F0E4%22/><text x=%2250%22 y=%2268%22 font-size=%2264%22 font-family=%22Georgia,serif%22 font-weight=%22bold%22 fill=%22%233E5B44%22 text-anchor=%22middle%22>M</text></svg>">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
 <!-- Google Analytics 4 — Murphy's Moving property, stream: https://murphysmoving.com -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CK16HHN1XG"></script>
@@ -33,16 +33,14 @@
 
 <style>
   :root{
-    --navy:#1b2430;
-    --navy-soft:#232d3d;
-    --navy-softer:#2c3648;
-    --amber:#E8A33D;
-    --amber-deep:#b9791f;
-    --cream:#F7F3EA;
-    --cream-dim:#ece5d3;
-    --slate:#6b7280;
-    --white:#ffffff;
-    --radius:3px;
+    --cream:#F5F0E4;
+    --cream-deep:#EAE2CE;
+    --ink:#241F19;
+    --forest:#3E5B44;
+    --forest-deep:#2A3E2F;
+    --gold:#C99A3B;
+    --white:#FFFFFF;
+    --radius:2px;
     --maxw:1180px;
   }
   *{box-sizing:border-box;}
@@ -50,331 +48,282 @@
   body{
     margin:0;
     background:var(--cream);
-    color:var(--navy);
-    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    font-family:'Karla',sans-serif;
     font-weight:400;
-    line-height:1.6;
+    line-height:1.65;
     -webkit-font-smoothing:antialiased;
   }
-  h1,h2,h3,.display{
-    font-family:'Oswald',sans-serif;
-    text-transform:uppercase;
-    line-height:1.05;
+  h1,h2,h3{
+    font-family:'Zilla Slab',serif;
+    font-weight:700;
+    line-height:1.1;
     margin:0;
   }
-  .mono{font-family:'Space Mono',monospace;}
+  .label{
+    font-family:'Karla',sans-serif;
+    font-weight:700;
+    font-size:0.76rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+  }
   a{color:inherit;}
   img{max-width:100%;display:block;}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
-  ::selection{background:var(--amber);color:var(--navy);}
+  ::selection{background:var(--gold);color:var(--ink);}
 
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important;transition:none !important;scroll-behavior:auto !important;}
   }
 
-  .laneline{
-    height:28px;
+  /* ---------- Stitch divider ---------- */
+  .stitch{
+    height:20px;
     background:var(--cream);
-    display:flex;align-items:center;
-    overflow:hidden;
+    position:relative;
   }
-  .laneline::before{
+  .stitch::before,.stitch::after{
     content:"";
-    display:block;width:100%;height:5px;
-    background-image:repeating-linear-gradient(90deg, var(--amber) 0 34px, transparent 34px 58px);
+    position:absolute;left:0;right:0;
+    height:0;
+    border-top:2px dashed var(--gold);
+    opacity:0.65;
   }
-  .laneline.on-navy{background:var(--navy);}
+  .stitch::before{top:6px;}
+  .stitch::after{top:12px;}
+  .stitch.on-forest{background:var(--forest-deep);}
+  .stitch.on-forest::before,.stitch.on-forest::after{border-top-color:rgba(245,240,228,0.4);}
 
+  /* ---------- Top bar ---------- */
   .topbar{
     position:sticky;top:0;z-index:50;
-    background:var(--navy);
-    color:var(--cream);
-    border-bottom:2px solid var(--amber);
+    background:var(--cream);
+    border-bottom:2px solid var(--ink);
   }
   .topbar-inner{
-    max-width:var(--maxw);margin:0 auto;padding:14px 24px;
+    max-width:var(--maxw);margin:0 auto;padding:16px 24px;
     display:flex;align-items:center;justify-content:space-between;gap:16px;
   }
   .brand{
-    display:flex;align-items:baseline;gap:10px;
-    font-family:'Oswald',sans-serif;
+    display:flex;align-items:baseline;gap:8px;
+    font-family:'Zilla Slab',serif;font-weight:700;
     font-size:1.5rem;
-    text-transform:uppercase;
   }
-  .brand .accent{color:var(--amber);}
+  .brand .accent{color:var(--forest);}
   .brand small{
-    font-family:'Space Mono',monospace;
-    font-size:0.6rem;
-    color:var(--slate);
-    letter-spacing:0.08em;
-    text-transform:none;
+    font-family:'Karla',sans-serif;font-weight:600;
+    font-size:0.62rem;letter-spacing:0.1em;
+    color:var(--ink);opacity:0.55;
   }
   .topbar-cta{display:flex;gap:10px;align-items:center;}
   .callnow{
     display:inline-flex;align-items:center;gap:8px;
-    background:var(--amber);color:var(--navy);
-    font-family:'Space Mono',monospace;font-weight:700;
+    background:var(--forest);color:var(--cream);
+    font-family:'Karla',sans-serif;font-weight:700;
     font-size:0.85rem;
-    padding:10px 18px;border-radius:var(--radius);
-    text-decoration:none;
-    white-space:nowrap;
+    padding:11px 18px;border-radius:var(--radius);
+    text-decoration:none;white-space:nowrap;
     transition:background 0.15s ease;
   }
-  .callnow:hover{background:#f4b859;}
+  .callnow:hover{background:var(--forest-deep);}
   .callnow.ghost{
-    background:transparent;border:1.5px solid var(--slate);color:var(--cream);
+    background:transparent;border:1.5px solid var(--ink);color:var(--ink);
   }
-  .callnow.ghost:hover{border-color:var(--cream);background:rgba(255,255,255,0.06);}
+  .callnow.ghost:hover{background:rgba(36,31,25,0.06);}
   @media (max-width:640px){
     .callnow.ghost{display:none;}
-    .brand{font-size:1.2rem;}
+    .brand{font-size:1.25rem;}
   }
 
-  .section{padding:88px 0;}
-  .kicker{
-    font-family:'Space Mono',monospace;
-    font-size:0.75rem;
-    letter-spacing:0.14em;
-    color:var(--amber-deep);
-    text-transform:uppercase;
-    margin-bottom:14px;
-    display:block;
-  }
+  /* ---------- Section shell ---------- */
+  .section{padding:90px 0;}
+  .label.eyebrow{color:var(--forest);margin-bottom:16px;display:block;}
   .section-heading{
-    font-size:clamp(2.4rem,5.4vw,3.8rem);
+    font-size:clamp(2.2rem,4.8vw,3.4rem);
     max-width:760px;
   }
   .section-sub{
-    font-size:1.08rem;
-    color:var(--slate);
-    margin-top:14px;
-    max-width:560px;
+    font-size:1.08rem;color:#5c5548;margin-top:14px;max-width:560px;
+    font-family:'Karla',sans-serif;
   }
-  .reveal{
-    opacity:0;transform:translateY(20px);
-    transition:opacity 0.6s ease, transform 0.6s ease;
-  }
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity 0.6s ease, transform 0.6s ease;}
   .reveal.in{opacity:1;transform:translateY(0);}
 
-  .hero{
-    background:var(--navy);
+  /* ---------- Hero (split panel) ---------- */
+  .hero{background:var(--cream);}
+  .hero-grid{
+    display:grid;grid-template-columns:1.1fr 0.9fr;
+    min-height:560px;
+  }
+  @media (max-width:900px){.hero-grid{grid-template-columns:1fr;min-height:0;}}
+  .hero-left{
+    background:var(--forest-deep);
     color:var(--cream);
-    position:relative;
-    overflow:hidden;
-    padding:100px 0 64px;
+    padding:80px 56px;
+    display:flex;flex-direction:column;justify-content:center;
   }
-  .hero::after{
-    content:"";
-    position:absolute;left:0;right:0;bottom:40px;
-    height:3px;
-    background-image:repeating-linear-gradient(90deg, var(--amber) 0 46px, transparent 46px 82px);
-    opacity:0.55;
-  }
-  .hero-inner{position:relative;max-width:820px;}
-  .eyebrow-badge{
-    display:inline-flex;align-items:center;gap:10px;
-    font-family:'Space Mono',monospace;
-    font-size:0.75rem;letter-spacing:0.1em;
-    color:var(--navy);
-    background:var(--amber);
-    padding:8px 16px;
-    border-radius:20px;
-    margin-bottom:28px;
-  }
+  @media (max-width:640px){.hero-left{padding:56px 28px;}}
+  .hero-left .label{color:var(--gold);margin-bottom:20px;}
   .hero h1{
-    font-size:clamp(2.8rem,7vw,5.2rem);
+    font-size:clamp(2.6rem,5.6vw,4.2rem);
     color:var(--cream);
   }
-  .hero h1 .accent{color:var(--amber);}
+  .hero h1 .accent{color:var(--gold);}
   .hero-tagline{
-    font-size:1.2rem;
-    color:#c9cdd6;
-    margin-top:22px;
-    max-width:520px;
+    font-size:1.15rem;color:#d3d9d0;margin-top:22px;max-width:460px;
+    font-family:'Karla',sans-serif;
   }
-  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px;}
   .btn{
     display:inline-flex;align-items:center;gap:10px;
-    font-family:'Space Mono',monospace;font-weight:700;font-size:0.92rem;
-    padding:16px 28px;border-radius:var(--radius);
+    font-family:'Karla',sans-serif;font-weight:700;font-size:0.94rem;
+    padding:15px 26px;border-radius:var(--radius);
     text-decoration:none;
     transition:transform 0.15s ease, background 0.15s ease;
   }
   .btn:hover{transform:translateY(-2px);}
-  .btn-primary{background:var(--amber);color:var(--navy);}
-  .btn-primary:hover{background:#f4b859;}
-  .btn-secondary{background:transparent;border:1.5px solid var(--slate);color:var(--cream);}
+  .btn-primary{background:var(--gold);color:var(--ink);}
+  .btn-primary:hover{background:#dcae4c;}
+  .btn-secondary{background:transparent;border:1.5px solid rgba(245,240,228,0.5);color:var(--cream);}
   .btn-secondary:hover{border-color:var(--cream);}
 
-  .about-wrap{
-    display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:start;
+  .hero-right{
+    background:var(--cream-deep);
+    padding:56px;
+    display:flex;flex-direction:column;justify-content:center;
+    gap:0;
   }
-  @media (max-width:880px){.about-wrap{grid-template-columns:1fr;}}
-  .about-copy p{font-size:1.08rem;max-width:560px;margin:0 0 16px;}
-  .about-note{
-    font-family:'Space Mono',monospace;
-    font-size:0.82rem;color:var(--slate);
+  @media (max-width:640px){.hero-right{padding:40px 28px;}}
+  .hero-right svg{width:100%;height:auto;max-width:360px;margin:0 auto 30px;}
+  .stat-strip{display:flex;flex-direction:column;gap:0;}
+  .stat-row{
+    display:flex;justify-content:space-between;padding:13px 0;
+    border-bottom:1px solid rgba(36,31,25,0.12);
+    font-family:'Karla',sans-serif;font-size:0.95rem;
   }
-  .tag-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
-  .tag-pill{
-    font-family:'Space Mono',monospace;
-    font-size:0.8rem;
-    background:var(--navy);
-    color:var(--cream);
-    border:none;
-    padding:10px 16px;
-    border-radius:20px;
-    cursor:pointer;
-    transition:background 0.15s ease;
-  }
-  .tag-pill:hover{background:var(--amber-deep);}
-  .tag-pill:focus-visible{outline:2px solid var(--amber);outline-offset:2px;}
-
-  .about-visual{
-    background:var(--navy);
-    color:var(--cream);
-    padding:30px;
-    position:relative;
-  }
-  .about-visual .kicker{color:var(--amber);margin-bottom:18px;}
-  .stat-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-size:0.95rem;}
   .stat-row:last-child{border-bottom:none;}
-  .stat-row b{font-family:'Space Mono',monospace;color:var(--amber);}
+  .stat-row b{font-family:'Zilla Slab',serif;font-weight:700;color:var(--forest);}
 
-  .flip-grid{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:22px;
-    margin-top:50px;
-  }
-  @media (max-width:980px){.flip-grid{grid-template-columns:repeat(2,1fr);}}
-  @media (max-width:560px){.flip-grid{grid-template-columns:1fr;}}
-  .flip-card{
-    perspective:1200px;
-    height:260px;
-    cursor:pointer;
-  }
-  .flip-card-inner{
-    position:relative;width:100%;height:100%;
-    transition:transform 0.6s cubic-bezier(.4,.2,.2,1);
-    transform-style:preserve-3d;
-  }
-  .flip-card.flipped .flip-card-inner{transform:rotateY(180deg);}
-  .flip-face{
-    position:absolute;inset:0;
-    backface-visibility:hidden;
-    border-radius:var(--radius);
-    padding:26px 22px;
-    display:flex;flex-direction:column;
-  }
-  .flip-front{
-    background:var(--navy);color:var(--cream);
-    justify-content:space-between;
-  }
-  .flip-front .num{font-family:'Space Mono',monospace;color:var(--amber);font-size:0.8rem;}
-  .flip-front h3{font-size:1.5rem;color:var(--cream);margin-top:10px;}
-  .flip-front .tap{font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--slate);margin-top:auto;}
-  .flip-back{
-    background:var(--amber);color:var(--navy);
-    transform:rotateY(180deg);
-    justify-content:center;
-  }
-  .flip-back ul{list-style:none;padding:0;margin:0;}
-  .flip-back li{
-    font-size:0.92rem;padding:6px 0;
-    border-bottom:1px solid rgba(27,36,48,0.15);
-  }
-  .flip-back li:last-child{border-bottom:none;}
+  /* ---------- About ---------- */
+  .about-copy p{font-size:1.08rem;max-width:640px;margin:0 0 16px;font-family:'Karla',sans-serif;}
+  .about-note{font-family:'Karla',sans-serif;font-size:0.9rem;color:#5c5548;}
 
+  /* ---------- Services (static panels, no flip) ---------- */
+  .service-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:48px;
+  }
+  @media (max-width:880px){.service-grid{grid-template-columns:1fr;}}
+  .service-panel{
+    background:var(--white);
+    border:1px solid rgba(36,31,25,0.12);
+    padding:32px 30px;
+  }
+  .service-panel.primary{border-top:5px solid var(--forest);}
+  .service-panel.secondary{border-top:5px solid var(--gold);}
+  .service-panel h3{font-size:1.7rem;margin-bottom:16px;}
+  .service-panel ul{list-style:none;padding:0;margin:0;}
+  .service-panel li{
+    padding:11px 0;border-bottom:1px solid rgba(36,31,25,0.08);
+    font-family:'Karla',sans-serif;font-size:0.98rem;
+    display:flex;gap:10px;
+  }
+  .service-panel li:last-child{border-bottom:none;}
+  .service-panel li::before{content:"—";color:var(--forest);flex-shrink:0;}
+  .mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px;}
+  @media (max-width:880px){.mini-grid{grid-template-columns:1fr;}}
+  .mini-panel{
+    background:var(--cream-deep);
+    padding:24px 26px;
+  }
+  .mini-panel h4{font-family:'Zilla Slab',serif;font-size:1.2rem;margin-bottom:10px;}
+  .mini-panel p{font-family:'Karla',sans-serif;font-size:0.92rem;color:#4d4739;margin:0;}
+
+  /* ---------- Pricing ---------- */
   .price-panel{
-    margin-top:50px;
-    background:var(--navy);color:var(--cream);
-    padding:44px;position:relative;
+    margin-top:50px;background:var(--forest-deep);color:var(--cream);
+    padding:44px;
   }
-  .price-grid{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
-    background:rgba(232,163,61,0.25);margin-top:26px;
-  }
+  .price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(201,154,59,0.3);margin-top:26px;}
   @media (max-width:760px){.price-grid{grid-template-columns:repeat(2,1fr);}}
-  .price-cell{background:var(--navy);padding:26px 18px;text-align:center;}
-  .price-cell .label{font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--amber);letter-spacing:0.05em;margin-bottom:12px;}
-  .price-cell .amount{font-family:'Oswald',sans-serif;font-size:2.5rem;color:var(--cream);}
-  .price-note{margin-top:22px;font-size:0.9rem;color:#aeb3bd;}
+  .price-cell{background:var(--forest-deep);padding:26px 18px;text-align:center;}
+  .price-cell .label{color:var(--gold);margin-bottom:12px;}
+  .price-cell .amount{font-family:'Zilla Slab',serif;font-weight:700;font-size:2.4rem;color:var(--cream);}
+  .price-note{margin-top:22px;font-size:0.9rem;color:#c3c9bf;font-family:'Karla',sans-serif;}
   .quote-nudge{
-    margin-top:22px;padding-top:20px;border-top:1px dashed rgba(232,163,61,0.35);
+    margin-top:22px;padding-top:20px;border-top:1px dashed rgba(201,154,59,0.4);
     display:flex;flex-wrap:wrap;align-items:center;gap:16px;
   }
-  .quote-nudge p{margin:0;font-size:0.96rem;color:#c9cdd6;}
+  .quote-nudge p{margin:0;font-size:0.96rem;color:#d3d9d0;font-family:'Karla',sans-serif;}
 
-  .review-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:50px;
-  }
+  /* ---------- Reviews ---------- */
+  .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px;}
   @media (max-width:900px){.review-grid{grid-template-columns:1fr;}}
-  .review-card{
-    background:var(--white);
-    border-left:4px solid var(--amber);
-    padding:26px;
-  }
-  .review-card .mark{font-family:Georgia,serif;font-size:2.6rem;color:var(--amber);line-height:0.5;display:block;margin-bottom:10px;}
-  .review-card p{font-size:0.98rem;margin:0 0 14px;}
-  .review-card .who{font-family:'Space Mono',monospace;font-size:0.75rem;color:var(--slate);}
+  .review-card{background:var(--white);padding:28px;border:1px solid rgba(36,31,25,0.1);}
+  .review-card .mark{font-family:Georgia,serif;font-size:2.6rem;color:var(--gold);line-height:0.5;display:block;margin-bottom:10px;}
+  .review-card p{font-size:0.98rem;margin:0 0 14px;font-family:'Karla',sans-serif;}
+  .review-card .who{font-family:'Karla',sans-serif;font-weight:700;font-size:0.8rem;color:#5c5548;}
 
-  .area-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:50px;align-items:start;}
+  /* ---------- Area ---------- */
+  .area-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:48px;align-items:start;}
   @media (max-width:880px){.area-wrap{grid-template-columns:1fr;}}
   .area-list{display:flex;flex-wrap:wrap;gap:10px;}
   .area-pill{
-    font-family:'Space Mono',monospace;font-size:0.82rem;
-    background:var(--white);border:1px solid rgba(27,36,48,0.15);
+    font-family:'Karla',sans-serif;font-weight:600;font-size:0.86rem;
+    background:var(--white);border:1px solid rgba(36,31,25,0.15);
     padding:9px 15px;border-radius:20px;
   }
-  .area-note{background:var(--amber);color:var(--navy);padding:28px;font-size:0.98rem;}
-  .area-note b{display:block;font-family:'Oswald',sans-serif;font-size:1.4rem;margin-bottom:8px;text-transform:uppercase;}
+  .area-note{background:var(--forest);color:var(--cream);padding:28px;font-family:'Karla',sans-serif;font-size:0.98rem;}
+  .area-note b{display:block;font-family:'Zilla Slab',serif;font-size:1.3rem;margin-bottom:8px;}
 
-  .faq-list{margin-top:50px;max-width:800px;}
-  details.faq-item{
-    border-bottom:1px solid rgba(27,36,48,0.15);
-    padding:18px 0;
-  }
+  /* ---------- FAQ ---------- */
+  .faq-list{margin-top:48px;max-width:800px;}
+  details.faq-item{border-bottom:1px solid rgba(36,31,25,0.15);padding:18px 0;}
   details.faq-item summary{
-    font-family:'Oswald',sans-serif;
-    font-size:1.15rem;
-    text-transform:none;
-    cursor:pointer;
-    list-style:none;
-    display:flex;justify-content:space-between;align-items:center;
-    gap:12px;
+    font-family:'Zilla Slab',serif;font-weight:600;font-size:1.15rem;
+    cursor:pointer;list-style:none;
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
   }
   details.faq-item summary::-webkit-details-marker{display:none;}
-  details.faq-item summary::after{
-    content:"+";
-    font-family:'Space Mono',monospace;
-    font-size:1.3rem;color:var(--amber-deep);
-    flex-shrink:0;
-  }
+  details.faq-item summary::after{content:"+";font-family:'Karla',sans-serif;font-size:1.3rem;color:var(--forest);flex-shrink:0;}
   details.faq-item[open] summary::after{content:"–";}
-  details.faq-item p{margin:14px 0 0;font-size:0.98rem;color:var(--navy);max-width:640px;}
+  details.faq-item p{margin:14px 0 0;font-size:0.98rem;color:var(--ink);max-width:640px;font-family:'Karla',sans-serif;}
 
-  .cta-band{background:var(--navy);color:var(--cream);text-align:center;padding:84px 24px;position:relative;overflow:hidden;}
-  .cta-band::before{
-    content:"";position:absolute;left:0;right:0;top:0;height:3px;
-    background-image:repeating-linear-gradient(90deg, var(--amber) 0 46px, transparent 46px 82px);
+  /* ---------- CTA (two-panel card) ---------- */
+  .cta-wrap{padding:90px 0;}
+  .cta-card{
+    display:grid;grid-template-columns:1.2fr 0.8fr;
+    background:var(--ink);color:var(--cream);
+    overflow:hidden;
   }
-  .cta-band h2{font-size:clamp(2.2rem,5.4vw,3.6rem);color:var(--cream);}
-  .cta-band .bignum{font-family:'Oswald',sans-serif;font-size:clamp(2.4rem,7vw,4.4rem);margin:26px 0;color:var(--amber);}
-  .cta-band .bignum a{text-decoration:none;color:var(--amber);}
-  .cta-sub{color:#c9cdd6;max-width:520px;margin:0 auto;font-size:1.05rem;}
-  .cta-buttons{display:flex;gap:16px;justify-content:center;margin-top:32px;flex-wrap:wrap;}
-  .cta-buttons .btn-light{background:var(--amber);color:var(--navy);font-family:'Space Mono',monospace;font-weight:700;padding:16px 28px;text-decoration:none;border-radius:var(--radius);}
-  .cta-buttons .btn-outline{border:1.5px solid var(--cream);color:var(--cream);padding:16px 28px;text-decoration:none;font-family:'Space Mono',monospace;font-weight:700;border-radius:var(--radius);}
+  @media (max-width:800px){.cta-card{grid-template-columns:1fr;}}
+  .cta-left{padding:56px;}
+  .cta-left h2{font-size:clamp(2rem,4.6vw,3rem);color:var(--cream);}
+  .cta-left p{font-family:'Karla',sans-serif;color:#c9c4b6;margin-top:16px;max-width:420px;}
+  .cta-right{
+    background:var(--forest);
+    padding:56px;
+    display:flex;flex-direction:column;justify-content:center;gap:16px;
+  }
+  .cta-right .bignum{font-family:'Zilla Slab',serif;font-weight:700;font-size:clamp(1.8rem,4vw,2.4rem);}
+  .cta-right .bignum a{color:var(--cream);text-decoration:none;}
+  .cta-right a.link-row{
+    font-family:'Karla',sans-serif;font-weight:600;font-size:0.95rem;
+    color:var(--cream);text-decoration:none;
+    display:flex;align-items:center;gap:8px;
+    padding-top:10px;border-top:1px solid rgba(245,240,228,0.2);
+  }
 
-  footer{background:var(--navy);color:#aeb3bd;padding:48px 0 30px;font-size:0.88rem;}
+  /* ---------- Footer ---------- */
+  footer{background:var(--cream-deep);color:#5c5548;padding:44px 0 28px;font-size:0.88rem;}
   .footer-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;}
-  .footer-brand{font-family:'Oswald',sans-serif;font-size:1.5rem;color:var(--cream);text-transform:uppercase;}
-  footer a{text-decoration:none;color:var(--amber);}
-  footer a:hover{color:var(--cream);}
-  .footer-links{display:flex;gap:22px;flex-wrap:wrap;}
+  .footer-brand{font-family:'Zilla Slab',serif;font-weight:700;font-size:1.4rem;color:var(--ink);}
+  footer a{text-decoration:none;color:var(--forest);font-family:'Karla',sans-serif;}
+  footer a:hover{color:var(--ink);}
+  .footer-links{display:flex;gap:20px;flex-wrap:wrap;}
   .footer-bottom{
-    margin-top:34px;padding-top:20px;border-top:1px solid rgba(232,163,61,0.15);
-    font-family:'Space Mono',monospace;font-size:0.72rem;
-    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--slate);
+    margin-top:32px;padding-top:18px;border-top:1px solid rgba(36,31,25,0.15);
+    font-family:'Karla',sans-serif;font-size:0.78rem;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
   }
 </style>
 </head>
@@ -382,7 +331,7 @@
 
 <div class="topbar">
   <div class="topbar-inner">
-    <div class="brand">MURPHY'S <span class="accent">MOVING</span><small>&nbsp;&nbsp;SINCE 2010</small></div>
+    <div class="brand">Murphy's <span class="accent">Moving</span><small>&nbsp;&nbsp;SINCE 2010</small></div>
     <div class="topbar-cta">
       <a href="tel:2349269619" class="callnow ghost">(234) 926-9619</a>
       <a href="tel:2349269619" class="callnow">Call / Text Now</a>
@@ -391,144 +340,105 @@
 </div>
 
 <section class="hero">
-  <div class="wrap hero-inner">
-    <div class="eyebrow-badge">FAMILY-RUN &nbsp;•&nbsp; BROOKFIELD, OH &nbsp;•&nbsp; EST. 2010</div>
-    <h1>HAUL YOU'LL EVER <span class="accent">NEED</span></h1>
-    <p class="hero-tagline">Full-service moving and junk removal for the greater Youngstown area. We show up, we carry it, we leave it right.</p>
-    <div class="hero-ctas">
-      <a href="tel:2349269619" class="btn btn-primary">Call or Text — (234) 926-9619</a>
-      <a href="#pricing" class="btn btn-secondary">See Pricing</a>
-    </div>
-  </div>
-</section>
-
-<div class="laneline on-navy"></div>
-
-<section class="section" id="about">
-  <div class="wrap">
-    <span class="kicker">Who we are</span>
-    <h2 class="section-heading reveal">FAMILY-RUN, LOCAL, SINCE 2010</h2>
-    <div class="about-wrap" style="margin-top:40px;">
-      <div class="about-copy reveal">
-        <p>Murphy's Moving has been showing up in Brookfield, Ohio since 2010 — trucks loaded, boxes taped, whatever the job calls for. Customers keep asking for the same crew by name: movers like Dave and John show up again and again in the reviews, the kind of guys who make an all-day move feel handled.</p>
-        <p class="about-note">Licensed &amp; insured. Local, and still doing it the same way all these years in.</p>
-        <div class="tag-pills">
-          <button class="tag-pill" data-target="card-moving">Moving</button>
-          <button class="tag-pill" data-target="card-junk">Junk Removal</button>
-          <button class="tag-pill" data-target="card-storage">Storage &amp; PODs</button>
-          <button class="tag-pill" data-target="card-clean">Downsizing &amp; Cleaning</button>
-        </div>
+  <div class="hero-grid">
+    <div class="hero-left">
+      <span class="label">Family-Run — Brookfield, OH — Est. 2010</span>
+      <h1>Haul you'll ever <span class="accent">need.</span></h1>
+      <p class="hero-tagline">Full-service moving and junk removal for the greater Youngstown area. We show up, we carry it, we leave it right.</p>
+      <div class="hero-ctas">
+        <a href="tel:2349269619" class="btn btn-primary">Call or Text — (234) 926-9619</a>
+        <a href="#pricing" class="btn btn-secondary">See Pricing</a>
       </div>
-      <div class="about-visual reveal">
-        <span class="kicker">At a glance</span>
+    </div>
+    <div class="hero-right">
+      <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="10" y="40" width="100" height="50" rx="3" stroke="#3E5B44" stroke-width="3"/>
+        <path d="M110 55H150L172 75V90H110V55Z" stroke="#3E5B44" stroke-width="3" stroke-linejoin="round"/>
+        <rect x="118" y="63" width="24" height="16" stroke="#C99A3B" stroke-width="2.5"/>
+        <circle cx="45" cy="92" r="10" stroke="#241F19" stroke-width="3"/>
+        <circle cx="150" cy="92" r="10" stroke="#241F19" stroke-width="3"/>
+        <line x1="10" y1="40" x2="10" y2="90" stroke="#3E5B44" stroke-width="3"/>
+        <line x1="30" y1="52" x2="90" y2="52" stroke="#C99A3B" stroke-width="2" stroke-dasharray="4 4"/>
+      </svg>
+      <div class="stat-strip">
         <div class="stat-row"><span>Serving since</span><b>2010</b></div>
         <div class="stat-row"><span>Based in</span><b>Brookfield, OH</b></div>
         <div class="stat-row"><span>Estimate</span><b>Free</b></div>
-        <div class="stat-row"><span>Junk removal</span><b>By the load</b></div>
         <div class="stat-row"><span>Licensed &amp; insured</span><b>Yes</b></div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="laneline"></div>
+<div class="stitch"></div>
+
+<section class="section" id="about">
+  <div class="wrap">
+    <span class="label eyebrow">Who we are</span>
+    <h2 class="section-heading reveal">Family-run, local, since 2010</h2>
+    <div class="about-copy reveal" style="margin-top:30px;">
+      <p>Murphy's Moving has been showing up in Brookfield, Ohio since 2010 — trucks loaded, boxes taped, whatever the job calls for. Customers keep asking for the same crew by name: movers like Dave and John show up again and again in the reviews, the kind of guys who make an all-day move feel handled.</p>
+      <p class="about-note">Licensed &amp; insured. Local, and still doing it the same way all these years in.</p>
+    </div>
+  </div>
+</section>
+
+<div class="stitch"></div>
 
 <section class="section" id="services">
   <div class="wrap">
-    <span class="kicker">What we carry</span>
-    <h2 class="section-heading reveal">TAP A CARD TO SEE WHAT'S INSIDE</h2>
-    <p class="section-sub reveal">Moving and junk removal, side by side — whichever one you need.</p>
+    <span class="label eyebrow">What we carry</span>
+    <h2 class="section-heading reveal">Moving and junk removal, side by side</h2>
+    <p class="section-sub reveal">Two core services — plus a couple more, underneath.</p>
 
-    <div class="flip-grid">
-      <div class="flip-card reveal" id="card-moving" tabindex="0" role="button" aria-label="Full-Service Moving — tap to see details">
-        <div class="flip-card-inner">
-          <div class="flip-face flip-front">
-            <span class="num">01</span>
-            <h3>Moving</h3>
-            <span class="tap">TAP FOR DETAILS</span>
-          </div>
-          <div class="flip-face flip-back">
-            <ul>
-              <li>Residential moves, any size</li>
-              <li>Apartment &amp; small office</li>
-              <li>Local &amp; long-distance</li>
-              <li>Free in-home estimate</li>
-            </ul>
-          </div>
-        </div>
+    <div class="service-grid">
+      <div class="service-panel primary reveal">
+        <h3>Full-Service Moving</h3>
+        <ul>
+          <li>Residential moves, any size</li>
+          <li>Apartment &amp; small office moves</li>
+          <li>Local &amp; long-distance</li>
+          <li>Free in-home estimate</li>
+        </ul>
       </div>
-
-      <div class="flip-card reveal" id="card-junk" tabindex="0" role="button" aria-label="Junk Removal — tap to see details">
-        <div class="flip-card-inner">
-          <div class="flip-face flip-front">
-            <span class="num">02</span>
-            <h3>Junk Removal</h3>
-            <span class="tap">TAP FOR DETAILS</span>
-          </div>
-          <div class="flip-face flip-back">
-            <ul>
-              <li>Priced by the load</li>
-              <li>Donation &amp; recycling pickup</li>
-              <li>Responsible disposal</li>
-              <li>See pricing below</li>
-            </ul>
-          </div>
-        </div>
+      <div class="service-panel secondary reveal">
+        <h3>Junk Removal</h3>
+        <ul>
+          <li>Priced by the load — see below</li>
+          <li>Donation &amp; recycling pickup</li>
+          <li>Responsible disposal</li>
+          <li>Standard household junk &amp; debris</li>
+        </ul>
       </div>
+    </div>
 
-      <div class="flip-card reveal" id="card-storage" tabindex="0" role="button" aria-label="Storage and PODs — tap to see details">
-        <div class="flip-card-inner">
-          <div class="flip-face flip-front">
-            <span class="num">03</span>
-            <h3>Storage &amp; PODs</h3>
-            <span class="tap">TAP FOR DETAILS</span>
-          </div>
-          <div class="flip-face flip-back">
-            <ul>
-              <li>POD loading &amp; unloading</li>
-              <li>We load, you store</li>
-              <li>Consolidation help</li>
-              <li>Ask about timing</li>
-            </ul>
-          </div>
-        </div>
+    <div class="mini-grid">
+      <div class="mini-panel reveal">
+        <h4>Storage &amp; PODs</h4>
+        <p>POD loading and unloading, storage-unit consolidation — we load, you store.</p>
       </div>
-
-      <div class="flip-card reveal" id="card-clean" tabindex="0" role="button" aria-label="Downsizing and Cleaning — tap to see details">
-        <div class="flip-card-inner">
-          <div class="flip-face flip-front">
-            <span class="num">04</span>
-            <h3>Downsizing &amp; Cleaning</h3>
-            <span class="tap">TAP FOR DETAILS</span>
-          </div>
-          <div class="flip-face flip-back">
-            <ul>
-              <li>Downsizing &amp; liquidation</li>
-              <li>Pre- &amp; post-move cleaning</li>
-              <li>Estate &amp; life transitions</li>
-              <li>Ask when you book</li>
-            </ul>
-          </div>
-        </div>
+      <div class="mini-panel reveal">
+        <h4>Downsizing &amp; Cleaning</h4>
+        <p>Downsizing, liquidation, and pre- or post-move cleaning. Ask when you book.</p>
       </div>
     </div>
   </div>
 </section>
 
-<div class="laneline on-navy"></div>
+<div class="stitch on-forest"></div>
 
-<section class="section" id="pricing">
+<section class="section" id="pricing" style="background:var(--cream-deep);">
   <div class="wrap">
-    <span class="kicker">Transparent rates</span>
-    <h2 class="section-heading reveal">JUNK REMOVAL, PRICED BY THE LOAD</h2>
+    <span class="label eyebrow">Transparent rates</span>
+    <h2 class="section-heading reveal">Junk removal, priced by the load</h2>
     <p class="section-sub reveal">No surprises on pickup day.</p>
 
     <div class="price-panel reveal">
       <div class="price-grid">
-        <div class="price-cell"><div class="label">1 PICKUP TRUCK LOAD</div><div class="amount">$135</div></div>
-        <div class="price-cell"><div class="label">1/4 TRAILER LOAD</div><div class="amount">$265</div></div>
-        <div class="price-cell"><div class="label">1/2 TRAILER LOAD</div><div class="amount">$450</div></div>
-        <div class="price-cell"><div class="label">FULL LOAD</div><div class="amount">$700</div></div>
+        <div class="price-cell"><div class="label">1 Pickup Truck Load</div><div class="amount">$135</div></div>
+        <div class="price-cell"><div class="label">1/4 Trailer Load</div><div class="amount">$265</div></div>
+        <div class="price-cell"><div class="label">1/2 Trailer Load</div><div class="amount">$450</div></div>
+        <div class="price-cell"><div class="label">Full Load</div><div class="amount">$700</div></div>
       </div>
       <p class="price-note">Rates for standard household junk &amp; debris. Heavy or hazardous items may be quoted separately.</p>
       <div class="quote-nudge">
@@ -539,39 +449,39 @@
   </div>
 </section>
 
-<div class="laneline"></div>
+<div class="stitch"></div>
 
 <section class="section" id="reviews">
   <div class="wrap">
-    <span class="kicker">What people say</span>
-    <h2 class="section-heading reveal">REAL REVIEWS</h2>
+    <span class="label eyebrow">What people say</span>
+    <h2 class="section-heading reveal">Real reviews</h2>
 
     <div class="review-grid">
       <div class="review-card reveal">
         <span class="mark">&ldquo;</span>
         <p>Dave and John were FANTASTIC! They moved our entire 5-bedroom home in 10 hours and even handled our 800lb piano.</p>
-        <div class="who">— RACHEL K., 5★ REVIEW</div>
+        <div class="who">RACHEL K., 5★ REVIEW</div>
       </div>
       <div class="review-card reveal">
         <span class="mark">&ldquo;</span>
         <p>Murphy's Moving consolidated everything from a 30' storage unit into one smaller unit and even helped clean up afterward.</p>
-        <div class="who">— CHRIS A., 5★ REVIEW</div>
+        <div class="who">CHRIS A., 5★ REVIEW</div>
       </div>
       <div class="review-card reveal">
         <span class="mark">&ldquo;</span>
         <p>David and his crew were efficient, careful, and respectful of our property. They worked nonstop.</p>
-        <div class="who">— NANCY G., 5★ REVIEW</div>
+        <div class="who">NANCY G., 5★ REVIEW</div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="laneline on-navy"></div>
+<div class="stitch"></div>
 
 <section class="section" id="area">
   <div class="wrap">
-    <span class="kicker">Where we show up</span>
-    <h2 class="section-heading reveal">BROOKFIELD &amp; THE GREATER YOUNGSTOWN AREA</h2>
+    <span class="label eyebrow">Where we show up</span>
+    <h2 class="section-heading reveal">Brookfield &amp; the greater Youngstown area</h2>
 
     <div class="area-wrap">
       <div class="reveal">
@@ -594,12 +504,12 @@
   </div>
 </section>
 
-<div class="laneline"></div>
+<div class="stitch on-forest"></div>
 
-<section class="section" id="faq">
+<section class="section" id="faq" style="background:var(--cream-deep);">
   <div class="wrap">
-    <span class="kicker">Questions</span>
-    <h2 class="section-heading reveal">GOOD TO KNOW</h2>
+    <span class="label eyebrow">Questions</span>
+    <h2 class="section-heading reveal">Good to know</h2>
 
     <div class="faq-list reveal">
       <details class="faq-item">
@@ -630,25 +540,29 @@
   </div>
 </section>
 
-<section class="cta-band" id="contact">
+<div class="cta-wrap" id="contact">
   <div class="wrap">
-    <span class="kicker" style="color:var(--amber);">Get in touch</span>
-    <h2>Ready to get moving?</h2>
-    <div class="bignum"><a href="tel:2349269619">(234) 926-9619</a></div>
-    <p class="cta-sub">Call or text — Dave, John, and the crew are standing by. Free estimates, no pressure.</p>
-    <div class="cta-buttons">
-      <a href="tel:2349269619" class="btn-light">Call Now</a>
-      <a href="sms:2349269619" class="btn-outline">Text Us</a>
-      <a href="mailto:haulyoulleverneed@gmail.com" class="btn-outline">Email Us</a>
+    <div class="cta-card">
+      <div class="cta-left">
+        <span class="label" style="color:var(--gold);">Get in touch</span>
+        <h2 style="margin-top:14px;">Ready to get moving?</h2>
+        <p>Call or text — Dave, John, and the crew are standing by. Free estimates, no pressure.</p>
+      </div>
+      <div class="cta-right">
+        <div class="bignum"><a href="tel:2349269619">(234) 926-9619</a></div>
+        <a href="tel:2349269619" class="link-row">Call Now →</a>
+        <a href="sms:2349269619" class="link-row">Text Us →</a>
+        <a href="mailto:haulyoulleverneed@gmail.com" class="link-row">Email Us →</a>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
 <footer>
   <div class="wrap">
     <div class="footer-inner">
       <div>
-        <div class="footer-brand">MURPHY'S MOVING</div>
+        <div class="footer-brand">Murphy's Moving</div>
         <p style="max-width:320px;margin-top:10px;">Haul you'll ever need, for any chapter of life. Family-run since 2010, based in Brookfield, OH.</p>
       </div>
       <div class="footer-links">
@@ -670,34 +584,12 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-
   const observer = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.classList.add('in');
-        observer.unobserve(e.target);
-      }
+      if(e.isIntersecting){ e.target.classList.add('in'); observer.unobserve(e.target); }
     });
   },{threshold:0.15});
   document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-
-  document.querySelectorAll('.flip-card').forEach(card=>{
-    function toggle(){ card.classList.toggle('flipped'); }
-    card.addEventListener('click', toggle);
-    card.addEventListener('keydown', (e)=>{
-      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
-    });
-  });
-
-  document.querySelectorAll('.tag-pill').forEach(pill=>{
-    pill.addEventListener('click', ()=>{
-      const target = document.getElementById(pill.dataset.target);
-      if(!target) return;
-      target.scrollIntoView({behavior:'smooth', block:'center'});
-      target.classList.add('flipped');
-      setTimeout(()=>target.classList.remove('flipped'), 2600);
-    });
-  });
 </script>
 
 </body>
